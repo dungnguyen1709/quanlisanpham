@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Các Chức Năng</h3>
+<input type="text" id="text">
+<input type="button" id="add" value="Add" onclick="add(hangHoa)">
+<input type="button" id="edit" value="Edit" onclick="edit(hangHoa)">
+<input type="button" id="delete" value="Delete" onclick="del(hangHoa)">
+<h4>Danh sách sản phẩm : </h4>
+<p id="dssp"></p>
+<script>
+    let hangHoa = ['Nokia','SamSung','Apple','Asus','Oppo','Sugar','Pepsi'];
+    function hienthi(hangHoa) {
+        var a = "";
+        for (i = 0; i < hangHoa.length; i++) {
+            a = a + (i + 1) + "." + hangHoa[i]+ "<br/>";
+        }
+        return a;
+    }
+    document.getElementById("dssp").innerHTML = hienthi(hangHoa);
+    function add(hangHoa) {
+        var newHangHoa = prompt("Nhập mặt hàng muốn thêm: ");
+        hangHoa.push(newHangHoa);
+        document.getElementById("dssp").innerHTML = hienthi(hangHoa);
+    }
+    function edit(hangHoa) {
+        var vitriHangHoa = prompt("Nhập mặt hàng muốn sửa: ");
+        var editHangHoa = prompt("Nhập mặt hàng muốn thay thế: ");
+        hangHoa[vitriHangHoa - 1] = editHangHoa;
+        document.getElementById("dssp").innerHTML = hienthi(hangHoa);
+    }
+    function del(hangHoa) {
+        let vitriHangHoa = prompt("Nhập vị trí mặt hàng cần xóa: ");
+        hangHoa.splice(vitriHangHoa -1, 1);
+        document.getElementById("dssp").innerHTML = hienthi(hangHoa);
+    }
+</script>
+</body>
+</html>
